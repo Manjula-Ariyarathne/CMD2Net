@@ -1,0 +1,25 @@
+device : cuda
+model_name : CMD2Net
+seed: 8888 # 8888, 42, 1234
+dataset_name : MineNetCD
+data_type : local
+dataset_path : MineNetCD
+input_nc : 3
+num_classes : 2
+push_to_hub : False
+
+train:
+  epochs : 100
+  batch_size : 32
+  lr : 0.0001
+  loss: BCE
+  grad_clip_max_norm: 1.0
+  snapshots_dir : ./checkpoints/
+  optim : Adam
+  save_intervals : 1
+  lr_scheduler: cosine
+eval :
+  batch_size : 32
+test:
+  batch_size : 32
+  save_path : ./results/
